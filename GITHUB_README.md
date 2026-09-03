@@ -1,27 +1,63 @@
-# 9宫格GIF合成工具
+# Isaac80 - 九宫格 GIF 合成工具
 
-将 JPG 图片与 5 个 GIF 动画组合成 3×3 网格动画。
+一个强大而简单的工具，可以将任意 JPG/PNG 图片与 5 个 GIF 动画组合成高质量的 3×3 网格动画。
 
+![Release](https://img.shields.io/badge/version-v1.0.0-blue)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20Mac-lightgrey)
 
-## 快速开始
+## ✨ 特性
 
-### Windows 用户
-直接下载 [Release](https://github.com/你的账户/isaac80/releases) 中的 `9宫格GIF合成工具.exe`，双击运行即可。
+- **简单易用** - 直观的图形化界面，一键生成动画
+- **灵活组合** - 支持任意 JPG/PNG 图片与 5 个 GIF 组合
+- **高性能** - 快速处理，生成高质量 GIF 动画
+- **跨平台** - 完全支持 Windows、Linux、Mac
+- **开源免费** - MIT 许可证，完全开源
+
+## 🚀 快速开始
+
+### Windows 用户（推荐）
+
+1. 从 [Release](https://github.com/b1gbangcoin/isaac80/releases) 下载 `Isaac80.exe`
+2. 双击运行
+3. 选择图片 → 生成 GIF
 
 ### Linux/Mac 用户
-```bash
-# 安装依赖
-pip install Pillow
 
-# 运行
+```bash
+git clone https://github.com/b1gbangcoin/isaac80.git
+cd isaac80
+pip install Pillow
 python3 gui.py
-# 或双击 启动GIF工具 文件
 ```
 
-## 功能介绍
+## 📖 使用指南
 
-将输入的 JPG 图片与 5 个 GIF 动画按以下布局组合：
+### 图形界面
+
+1. **启动应用**
+   - 双击 `Isaac80.exe`（Windows）
+   - 运行 `python3 gui.py`（Linux/Mac）
+
+2. **选择图片**
+   - 点击"选择"按钮
+   - 选择任意 JPG 或 PNG 文件
+
+3. **生成 GIF**
+   - 点击"🎬 生成 GIF"
+   - 等待处理完成
+
+### 命令行
+
+```bash
+# 自动生成输出名
+python3 ninegrid_gif.py photo.jpg
+
+# 指定输出文件名
+python3 ninegrid_gif.py photo.jpg output.gif
+```
+
+## 🎬 9宫格布局
 
 ```
 GIF1  | JPG  | GIF2
@@ -33,65 +69,78 @@ GIF4  | JPG  | GIF5
 
 - **GIF 位置**：循环播放对应的 GIF 动画
 - **JPG 位置**：显示输入的静态图片
+- **总尺寸**：600×600 像素
 
-## 使用方法
+## 📋 技术规格
 
-### 图形界面（推荐）
-1. 打开应用
-2. 点击"选择"按钮选择 JPG 图片
-3. 输出文件名会自动生成（可修改）
-4. 点击"🎬 生成 GIF"
-5. 等待完成提示
+| 项目 | 规格 |
+|------|------|
+| 输出格式 | GIF 动画 |
+| 单元格大小 | 200×200 像素 |
+| 总尺寸 | 600×600 像素 |
+| 帧率 | 100ms/帧 |
+| 循环方式 | 无限循环 |
 
-### 命令行
-```bash
-python3 ninegrid_gif.py photo.jpg
-# 输出: photo_result.gif
-
-python3 ninegrid_gif.py photo.jpg output.gif
-```
-
-## 文件说明
+## 📦 文件说明
 
 | 文件 | 说明 |
 |------|------|
-| `启动GIF工具` | Linux/Mac 启动器（推荐双击） |
-| `gui.py` | 图形界面应用 |
-| `ninegrid_gif.py` | 核心处理脚本 |
-| `g1.gif ~ g5.gif` | 5 个 GIF 资源文件 |
-| `test.jpg` | 示例输入图片 |
-| `打包为EXE.bat` | Windows 打包脚本 |
+| `Isaac80.exe` | Windows 可执行文件 |
+| `gui.py` | 图形界面源代码 |
+| `ninegrid_gif.py` | 核心 GIF 合成引擎 |
+| `g1.gif ~ g5.gif` | 5 个 GIF 动画资源 |
+| `build.bat` | Windows 编译脚本 |
+| `BUILD_GUIDE.md` | 详细编译指南 |
 
-## 依赖
+## 💻 系统要求
 
+**Windows 版本（EXE）**
+- Windows 7 或更高版本
+- 30 MB 磁盘空间
+- 无需额外依赖
+
+**源代码版本**
 - Python 3.7+
-- Pillow
+- Pillow 库
 - tkinter（通常已内置）
 
-## 自己编译 Windows 版本
+## ❓ 常见问题
 
-如果官方没有提供最新的 Windows 版本，你可以自己编译：
+**Q: 能否修改中心的 GIF？**
+A: 可以。替换 `g1.gif ~ g5.gif` 文件即可。
 
-1. 安装 Python 3.8+
-2. 在项目目录运行：
-```bash
-python -m pip install pyinstaller pillow
-python -m pyinstaller --onefile --windowed --name "9宫格GIF合成工具" gui.py
-```
-3. 编译完成后在 `dist` 文件夹中获得 EXE 文件
+**Q: 输出文件太大？**
+A: 可以压缩输入图片或减少 GIF 帧数。
 
-## 许可证
+**Q: 支持其他格式吗？**
+A: 支持所有 PIL 支持的格式（JPG、PNG、BMP 等）。
 
-MIT License
+**Q: 怎样自己编译 EXE？**
+A: 参考 `BUILD_GUIDE.md` 文件的详细说明。
 
-## 贡献
+## 📝 许可证
+
+MIT License - 可自由使用、修改和分发
+
+## 🤝 贡献
 
 欢迎提交 Issue 和 Pull Request！
 
-## 示例
+## 📚 更新日志
 
-**输入：** 任意 JPG 图片（如风景照、人物照等）
+**v1.0.0 (2026-09-03)**
+- 首个正式版本
+- 完整的 GUI 界面
+- Windows EXE 预编译版本
+- 跨平台支持
+- 详细文档
 
-**输出：** 包含 5 个动画 GIF + 输入图片的 3×3 网格动画
+## 🔗 链接
 
-![Example](https://your-image-url.png)
+- [GitHub 仓库](https://github.com/b1gbangcoin/isaac80)
+- [Release 下载](https://github.com/b1gbangcoin/isaac80/releases)
+- [问题反馈](https://github.com/b1gbangcoin/isaac80/issues)
+
+---
+
+Made with ❤️ by b1gbangcoin
